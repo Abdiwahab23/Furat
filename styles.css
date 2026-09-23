@@ -327,6 +327,24 @@ html[dir="rtl"] .lang-toggle.is-ar .lang-slider {
   transition: var(--duration-normal);
 }
 
+.menu-toggle:focus {
+  outline: none;
+}
+
+.menu-toggle:focus-visible {
+  outline: 3px solid rgba(6, 74, 52, 0.22);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.site-header.menu-open .menu-toggle span:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.site-header.menu-open .menu-toggle span:last-child {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
 
 /* ----------------------------------------------------------
    4. Buttons
@@ -1952,30 +1970,84 @@ html[dir="rtl"] .service-slider[data-active-index="4"] .slider-bg {
   display: none;
   position: fixed;
   z-index: 45;
-  inset: 0;
-  background: rgba(250, 249, 245, 0.98);
+  top: 94px;
+  left: 50%;
+  width: min(92%, 420px);
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(6, 74, 52, 0.12);
+  border-radius: 24px;
+  box-shadow: 0 24px 70px rgba(3, 42, 30, 0.2);
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
-  transform: translateY(-100%);
-  transition: transform var(--duration-slow) var(--ease-out);
+  align-items: stretch;
+  gap: 3px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -12px) scale(0.98);
+  transform-origin: top center;
+  transition: opacity var(--duration-normal), visibility var(--duration-normal),
+    transform var(--duration-normal) var(--ease-out);
 }
 
 .mobile-menu.open {
-  transform: none;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0) scale(1);
 }
 
 .mobile-menu a {
   color: var(--ink);
-  font-size: 1.6rem;
+  font-size: 1rem;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+  padding: 12px 16px;
+  border-radius: 15px;
+  transition: color var(--duration-fast), background var(--duration-fast),
+    transform var(--duration-fast);
+}
+
+.mobile-menu a::after {
+  content: "↗";
+  color: var(--green-500);
+  font-size: 1.05rem;
+  transition: transform var(--duration-fast);
 }
 
 .mobile-menu a:hover {
   color: var(--green-600);
+  background: var(--green-50);
+  transform: translateX(3px);
+}
+
+html[dir="rtl"] .mobile-menu a:hover {
+  transform: translateX(-3px);
+}
+
+.mobile-menu a:hover::after {
+  transform: translate(2px, -2px);
+}
+
+.mobile-menu a:last-child {
+  margin-top: 5px;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--green-600), var(--green-800));
+  box-shadow: 0 10px 22px rgba(6, 74, 52, 0.2);
+}
+
+.mobile-menu a:last-child::after {
+  color: var(--gold-300);
+}
+
+.mobile-menu a:last-child:hover {
+  color: var(--white);
+  background: linear-gradient(135deg, var(--green-500), var(--green-700));
 }
 
 
@@ -2335,6 +2407,12 @@ html[dir="rtl"] .sample-card span {
    21. Responsive – Mobile (≤700px)
    ---------------------------------------------------------- */
 @media (max-width: 700px) {
+  .mobile-menu {
+    top: 74px;
+    width: 96%;
+    border-radius: 20px;
+  }
+
   .site-header {
     top: 8px;
     width: 96%;
