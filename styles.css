@@ -359,7 +359,7 @@ html[dir="rtl"] .lang-toggle.is-ar .lang-slider {
   border: none;
   border-radius: var(--radius-pill);
   font-weight: 600;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   letter-spacing: 0.01em;
   cursor: pointer;
   transition: transform var(--duration-normal) var(--ease-spring),
@@ -445,7 +445,7 @@ html[dir="rtl"] .button:hover .arrow {
   align-items: center;
   gap: 8px;
   font-weight: 600;
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   color: var(--green-600);
   transition: color var(--duration-fast);
 }
@@ -483,7 +483,7 @@ html[dir="rtl"] .text-link:hover span:last-child {
   align-items: center;
   gap: 5vw;
   min-height: 100vh;
-  padding: 140px clamp(24px, 6vw, 100px) 80px;
+  padding: 140px max(clamp(24px, 6vw, 100px), calc((100vw - 1760px) / 2)) 80px;
   background: var(--cream);
   overflow: hidden;
   isolation: isolate;
@@ -934,7 +934,7 @@ html[dir="rtl"] .display-title .highlight {
   align-items: center;
   width: max-content;
   animation: ticker 22s linear infinite;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -950,7 +950,7 @@ html[dir="rtl"] .display-title .highlight {
    7. Section Utilities
    ---------------------------------------------------------- */
 .section-pad {
-  padding: 120px clamp(24px, 7vw, 110px);
+  padding: 120px max(clamp(24px, 7vw, 110px), calc((100vw - 1760px) / 2));
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -1220,7 +1220,7 @@ html[dir="rtl"] .display-title .highlight {
 }
 
 .service-text p {
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   color: var(--ink-400);
   line-height: 1.65;
   margin: 0;
@@ -1629,7 +1629,7 @@ html[dir="rtl"] .step:hover {
 }
 
 .why-grid span {
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   color: var(--ink-400);
   line-height: 1.65;
 }
@@ -1690,7 +1690,7 @@ html[dir="rtl"] .why-grid div {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -1740,7 +1740,7 @@ html[dir="rtl"] .contact-form select {
 }
 
 .form-note {
-  font-size: 0.66rem;
+  font-size: 0.78rem;
   color: var(--ink-300);
   line-height: 1.5;
   margin: 0;
@@ -1759,7 +1759,7 @@ html[dir="rtl"] .contact-form select {
 footer {
   background: var(--green-900);
   color: var(--white);
-  padding: 64px clamp(24px, 7vw, 110px) 28px;
+  padding: 64px max(clamp(24px, 7vw, 110px), calc((100vw - 1760px) / 2)) 28px;
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -1820,7 +1820,7 @@ footer::after {
 }
 
 .footer-links a {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.6);
   transition: color var(--duration-fast);
@@ -1834,7 +1834,7 @@ footer::after {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.35);
 }
 
@@ -1936,7 +1936,7 @@ html[dir="rtl"] .service-slider[data-active-index="4"] .slider-bg {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--ink-500);
   border: none;
@@ -2215,6 +2215,20 @@ html[dir="rtl"] .floating-card-bottom {
 
 html[dir="rtl"] .sample-card span {
   text-align: right;
+}
+
+/* Keep type comfortably readable on large and ultra-wide displays while
+   the page content remains bounded to a balanced desktop measure. */
+@media (min-width: 1920px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 2560px) {
+  html {
+    font-size: 18px;
+  }
 }
 
 
@@ -2496,7 +2510,7 @@ html[dir="rtl"] .sample-card span {
   }
 
   .hero-service {
-    width: 78px;
+    width: clamp(78px, 21vw, 92px);
   }
 
   .hero-icon {
@@ -2511,7 +2525,7 @@ html[dir="rtl"] .sample-card span {
   }
 
   .hero-service b {
-    font-size: clamp(0.68rem, 2.8vw, 0.78rem);
+    font-size: clamp(0.72rem, 3vw, 0.82rem);
     line-height: 1.35;
     min-height: 2.7em;
     display: flex;
@@ -2653,6 +2667,13 @@ html[dir="rtl"] .sample-card span {
     padding: 24px 18px;
   }
 
+  .contact-intro p,
+  .detail-header p,
+  .intro-copy p {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
   .contact-form label {
     grid-column: 1;
   }
@@ -2707,10 +2728,14 @@ html[dir="rtl"] .sample-card span {
   }
 
   .slider-btn {
-    height: 36px;
-    font-size: 0.55rem;
-    padding: 0;
+    min-width: 0;
+    height: 46px;
+    font-size: clamp(0.66rem, 2.65vw, 0.75rem);
+    line-height: 1.15;
+    padding: 2px;
     letter-spacing: 0;
+    text-transform: none;
+    white-space: normal;
   }
 }
 
@@ -2720,8 +2745,8 @@ html[dir="rtl"] .sample-card span {
 @media (max-width: 420px) {
   .brand-name {
     white-space: normal;
-    font-size: 0.65rem;
-    line-height: 1.1;
+    font-size: 0.72rem;
+    line-height: 1.15;
     max-width: 70px;
   }
 
@@ -2739,12 +2764,34 @@ html[dir="rtl"] .sample-card span {
   }
 
   .lang-toggle {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
 
   .lang-en,
   .lang-ar {
-    padding: 4px 8px;
+    padding: 4px 7px;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand-name {
+    display: none;
+  }
+
+  .brand {
+    padding-inline: 5px;
+  }
+
+  .hero {
+    padding-inline: 16px;
+  }
+
+  .section-pad {
+    padding-inline: 16px;
+  }
+
+  .hero-service-icons {
+    gap-inline: 2px;
   }
 }
 
